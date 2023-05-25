@@ -25,8 +25,15 @@ namespace Logging.Controllers
                 new Product { Id = 3, ProductName = "Mouse"}
             };
 
-            _logger.LogInformation("GetAllProducts action has been called");
+            _logger.LogInformation("GetAllProducts action has been called.");
             return Ok(products);
+        }
+
+        [HttpPost]
+        public IActionResult GetAllProducts([FromBody] Product product)
+        {
+            _logger.LogWarning("Product Has been Created.");
+            return StatusCode(201);
         }
     }
 }
